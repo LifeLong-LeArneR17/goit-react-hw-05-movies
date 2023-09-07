@@ -11,3 +11,25 @@ export const TrendingFilm = styled(Link)`
    text-decoration: none;
    display: flex;
 `;
+
+export const MovieItemList = styled.ul`
+  display:flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+`;
+
+
+export const MovieTitle = styled(Link)`
+ text-decoration: none;
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  &:hover {
+    color: orange;
+  }
+`;
