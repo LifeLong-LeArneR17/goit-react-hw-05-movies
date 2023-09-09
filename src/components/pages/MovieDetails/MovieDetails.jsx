@@ -2,15 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams, Outlet } from 'react-router-dom'
 import { movieDetailsFetch } from 'components/services/trendingMovie'
 import { BackLink } from 'components/GoBack.jsx/GoBack'
+import { Loader } from 'components/Loader/Loader';
 import './MovieDetails.css'
 function MovieDetails  ()  {
   const [movie, setmovie] = useState([])
+  const [loader, setLoader] = useState('loading')
   const { movieId } = useParams();
    useEffect(() => {
      const fetchMovieDetails = async () => {
       try  {
       const result = await movieDetailsFetch(movieId)
       setmovie(result)
+      setLoader('loaded');
       }
       catch (error) {
       console.log(error);
@@ -21,6 +24,7 @@ function MovieDetails  ()  {
 
    return (
     <div className="movie-container">
+            {loader === 'loading' ? <Loader /> : null}
      <BackLink/>
      {movie.map((el) => (
   
