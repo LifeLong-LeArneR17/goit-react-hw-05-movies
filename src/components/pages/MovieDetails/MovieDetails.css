@@ -1,0 +1,78 @@
+.link {
+    text-decoration: none;
+    color: orange;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 40px;
+    font-style: uppercase;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+
+/* Стили для контейнера общей информации о фильме */
+.movie-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  /* Стили для изображения постера */
+  .movie-poster {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  /* Стили для названия фильма */
+  .movie-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Стили для оценки пользователя */
+  .user-score {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* Стили для обзора */
+  .movie-overview {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  /* Стили для жанров */
+  .movie-genres {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  /* Стили для дополнительной информации и ссылок */
+  .additional-info {
+    margin-top: 20px;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 16px;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  

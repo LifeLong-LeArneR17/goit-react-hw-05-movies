@@ -27,6 +27,28 @@ export const CatsFetch = async(id) => {
             api_key: LOCAL_KEY,  
         }
     });
-    return [data]
+    return data.cast
 }
 
+
+export const reviewsFetch = async(id) => {
+    const {data} = await axios.get(`${BASE_URL}/movie/${id}/reviews`, {
+        params: {
+            api_key: LOCAL_KEY,  
+        }
+    });
+    return data.results
+}
+
+
+export const searchMovieFetch = async (query) => {
+    const {data} = await axios.get(`${BASE_URL}/search/movie`, {
+        params: {
+            api_key: LOCAL_KEY,
+            include_adult: true,
+            page: 1,
+            query: query,
+        }
+    });
+    return data.results
+}

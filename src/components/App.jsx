@@ -1,31 +1,27 @@
-import React from 'react';
-import {Route, Routes } from 'react-router-dom';
-import { Home } from './pages/Home/Home';
-import { Movies } from './pages/Movies/Movies';
-import { MovieDetails } from './pages/MovieDetails/MovieDetails';
-import { Cast } from './pages/Cast/Cast';
-import { Reviews } from './pages/Reviews/Reviews';
-import { HomePageStyled } from './App.styled';
-import { HomeStyled } from './App.styled';
-import { MoviesStyled } from './App.styled';
-
-export function App () {
+import React, { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Loader } from './Loader/Loader';
+const Home = lazy(() => import("./pages/Home/Home"));
+const Movies = lazy(() => import('./pages/Movies/Movies'));
+const Cast = lazy(() => import('./pages/Cast/Cast'));
+const Reviews = lazy(() => import('./pages/Reviews/Reviews'));
+const MovieDetails = lazy(() => import('./pages/MovieDetails/MovieDetails'));
+const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
+export function App() {
   return (
-    <>
-    <nav>
-     <HomePageStyled>
-        <HomeStyled to='/'>Home</HomeStyled>
-        <MoviesStyled to='movies'>Movies</MoviesStyled>
-     </HomePageStyled>
-    </nav>
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/movies' element={<Movies/>}/>
-        <Route path='movies/:movieId' element={<MovieDetails/>}>
-          <Route path='cast' element={<Cast/>}/>
-          <Route path='reviews' element={<Reviews/>}/>
-        </Route>
-      </Routes>
-    </>
+   <main>
+      <Suspense fallback={<Loader/>}>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Home />} />
+            <Route path="movies" element={<Movies />} />
+            <Route path="movies/:movieId" element={<MovieDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+          </Route>
+        </Routes>
+      </Suspense>
+   </main>
   );
-};
+}

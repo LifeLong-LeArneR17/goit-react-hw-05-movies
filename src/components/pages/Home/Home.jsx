@@ -3,8 +3,11 @@ import { TrendingFilm } from './Home.styled'
 import { trendingMovieFetch } from 'components/services/trendingMovie';
 import { MovieItemList } from './Home.styled';
 import {MovieTitle} from './Home.styled'
-export function Home  ()  {
+import { useLocation } from "react-router-dom";
+
+ function Home  ()  {
   const [trendingMoviesData, setTrendingMovies] = useState([]);
+  const location = useLocation();
   useEffect(()=> {
     const fetchData = async() => {
    try{
@@ -26,7 +29,7 @@ export function Home  ()  {
        trendingMoviesData.map((movie) => (
         <li key={movie.id}>
           <img src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`} alt=''></img>
-          <MovieTitle to={`movies/${movie.id}`}>{movie.title}
+          <MovieTitle  state={{from : location}} to={`movies/${movie.id}`}>{movie.title}
           <img src="" alt=""></img>
           </MovieTitle>
         </li>
@@ -35,3 +38,5 @@ export function Home  ()  {
       </MovieItemList>
     </div>)
 }
+
+export default Home;
